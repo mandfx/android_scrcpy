@@ -13,6 +13,8 @@
     <string name="home_button">o</string>
     <string name="back_button">v</string>
 
+    <string name="top_appbar_navigation_icon_description">Clone</string>
+    <string name="top_appbar_action_icon_description">Settings</string>
 
 
 </resources>
