@@ -23,7 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.repeatOnLifecycle
 import com.suda.androidscrcpy.home.Home
-import com.suda.androidscrcpy.ui.theme.AndroidScrcpyTheme
+import com.suda.androidscrcpy.ui.theme.NiaTheme
 
 
 class MainActivity : ComponentActivity() {
@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
 
 
         setContent {
-            AndroidScrcpyTheme {
+            NiaTheme {
                 // A surface container using the "background" color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -82,7 +82,7 @@ fun Greeting(name: String) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    AndroidScrcpyTheme {
+    NiaTheme {
         Greeting(name = "ADB")
     }
 }
