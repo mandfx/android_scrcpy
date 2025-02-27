@@ -13,6 +13,7 @@ import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.net.InetAddress
 
 const val STATUS_TURN_OFF = 0
 const val STATUS_TURN_ON = 1
@@ -79,8 +80,9 @@ class MainVM(ctx: Application) : AndroidViewModel(ctx) {
     fun connect(ip: String, port: String, code: String) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
+                val relip = if (ip.endsWith(".com")) InetAddress.getByName(ip).hostAddress else ip;
                 if (code.isNotEmpty()) {
-                    ADBUtils.pair("adb_termux", "$ip:$port", code)
+                    ADBUtils.pair("adb_termux", "$relip:$port", code)
                 } else {
                     ADBUtils.exec("adb_termux", "connect", "$ip:$port")
                 }

@@ -29,7 +29,7 @@ import com.suda.androidscrcpy.ScrcpyActivity
 @Composable
 fun Home(mainVM: MainVM) {
     var showDialog by remember { mutableStateOf(false) }
-    var ip by remember { mutableStateOf("192.168.31.138") }
+    var ip by remember { mutableStateOf("192.168.5.68") }
     var port by remember { mutableStateOf("5555") }
     var code by remember { mutableStateOf("") }
 
@@ -38,30 +38,32 @@ fun Home(mainVM: MainVM) {
             onDismissRequest = { showDialog = false },
         ) {
             Card {
-                Column(horizontalAlignment = Alignment.End, modifier = Modifier.padding(10.dp)) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text(text = "IP", Modifier.width(100.dp))
-                        TextField(value = ip, singleLine = true,
-                            placeholder = {
-                                Text(text = "必填")
-                            }, onValueChange = { ip = it })
-                    }
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text(text = "PORT", Modifier.width(100.dp))
-                        TextField(value = port, singleLine = true,
-                            placeholder = {
-                                Text(text = "必填")
-                            }, onValueChange = { port = it })
-                    }
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text(text = "PAIR CODE", Modifier.width(100.dp))
-                        TextField(value = code,
-                            singleLine = true,
-                            placeholder = {
-                                Text(text = "可空")
-                            },
-                            onValueChange = { code = it })
-                    }
+                Column(horizontalAlignment = Alignment.End, modifier = Modifier.padding(16.dp)) {
+                    OutlinedTextField(
+                        value = ip,
+                        singleLine = true,
+                        onValueChange = { ip = it },
+                        label = { Text("IP") },
+                        placeholder = { Text(text = "必填") },
+                    )
+                    OutlinedTextField(
+                        value = port,
+                        singleLine = true,
+                        onValueChange = { port = it },
+                        label = { Text("Port") },
+                        placeholder = { Text(text = "必填") },
+                        modifier = Modifier.padding(top = 6.dp),
+                    )
+                    OutlinedTextField(
+                        value = code,
+                        singleLine = true,
+                        onValueChange = { code = it },
+                        label = { Text("Pair Code") },
+                        placeholder = { Text(text = "可空") },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                        modifier = Modifier.padding(top = 6.dp, bottom = 6.dp),
+                    )
+
                     Button(onClick = {
                         mainVM.connect(ip, port, code)
                         showDialog = false
