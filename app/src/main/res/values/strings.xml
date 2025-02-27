@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">AndroidScrcpy</string>
-
+    <string name="app_name">ScrcpyPhone</string>
 
     <string name="log_level_debug">Debug</string>
     <string name="log_level_normal">Normal</string>
@@ -9,8 +8,6 @@
     <string name="log_level_unknown">*Unknown*</string>
     <string name="log_level_value">Logcat log level set to \"%1$s\"</string>
     <string name="log_level_verbose">Verbose</string>
-
-
 
     <string name="appswitch_button">=</string>
     <string name="home_button">o</string>

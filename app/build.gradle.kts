@@ -8,7 +8,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.suda.androidscrcpy"
+        applicationId = "com.phone.scrcpy"
         minSdk = 24
         targetSdk = 28
         versionCode = 1
