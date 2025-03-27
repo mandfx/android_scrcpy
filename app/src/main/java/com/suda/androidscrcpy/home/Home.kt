@@ -3,6 +3,7 @@ package com.suda.androidscrcpy.home
 import android.content.Intent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -96,10 +98,21 @@ fun Home(mainVM: MainVM) {
                     text = "请通过USB插入设备，或者WIFI配对后连接"
                 )
             } else {
-                LazyColumn {
+                LazyColumn (
+                    contentPadding = PaddingValues(start = 16.0.dp, end = 16.0.dp, top = 8.0.dp, bottom = 8.0.dp)
+                ) {
                     items(adbs.size) {
+                        Card (
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 8.dp),
+                            //elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+                            shape = RoundedCornerShape(18.dp)
+                        ) {
                         val ctx = LocalView.current.context
-                        Box(modifier = Modifier.fillMaxWidth()) {
+                            Box(modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 10.dp, vertical = 6.dp)) {
                             Text(text = adbs[it], modifier = Modifier.align(Alignment.CenterStart))
                             Button(onClick = {
                                 ctx.startActivity(Intent(ctx, ScrcpyActivity::class.java).apply {
@@ -110,7 +123,7 @@ fun Home(mainVM: MainVM) {
                                 Text(text = "连接")
                             }
                         }
-
+                        }
                     }
                 }
             }
